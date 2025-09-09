@@ -68,6 +68,7 @@ The generated ZIP file contains all necessary files for the aktivity-dw-mapy pro
 | **Lokalita** | Text | ✅ | Location/region |
 | **Trvanie** | Text | ✅ | Duration (e.g., "1h 30m") |
 | **Popis** | Textarea | ✅ | Track description |
+| **URL mapy** | URL | ❌ | External map link (e.g., mapy.cz) |
 | **GPX súbor** | File | ✅ | GPS track file |
 | **Obrázky z trasy** | Files | ❌ | Multiple track images |
 

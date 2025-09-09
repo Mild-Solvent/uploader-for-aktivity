@@ -11,7 +11,8 @@ createApp({
                 distance: '',
                 location: '',
                 duration: '',
-                description: ''
+                description: '',
+                mapUrl: ''
             },
             files: {
                 mapa: null,
@@ -109,7 +110,7 @@ createApp({
                 elevation: `${this.formData.elevation}m`,
                 previewImage: "./preview.png",
                 gpxFile: "./track.gpx",
-                mapUrl: "",
+                mapUrl: this.formData.mapUrl || "",
                 tags: [],
                 createdAt: currentDate,
                 about: {
