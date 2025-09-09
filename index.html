@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKTIVITY DW Uploader</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/jszip@3.10.1/dist/jszip.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>AKTIVITY DW uploader</h1>
+        </header>
+
+        <main class="container">
+            <form @submit.prevent="generateZip" class="upload-form">
+                <div class="form-group">
+                    <label for="name">Názov:</label>
+                    <input type="text" id="name" v-model="formData.name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Kategória:</label>
+                    <select id="category" v-model="formData.category" required>
+                        <option value="">Vyberte kategóriu</option>
+                        <option value="cycling">Cyklistika</option>
+                        <option value="hiking">Turistika</option>
+                        <option value="running">Beh</option>
+                        <option value="skiing">Lyžovanie</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="mapa">Mapa PNG:</label>
+                    <input type="file" id="mapa" @change="handleFileUpload($event, 'mapa')" accept=".png" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="profil">Profil PNG:</label>
+                    <input type="file" id="profil" @change="handleFileUpload($event, 'profil')" accept=".png" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="difficulty">Obtiažnosť:</label>
+                    <select id="difficulty" v-model="formData.difficulty" required>
+                        <option value="">Vyberte obtiažnosť</option>
+                        <option value="easy">Ľahká</option>
+                        <option value="moderate">Stredná</option>
+                        <option value="hard">Ťažká</option>
+                        <option value="extreme">Extrémna</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="elevation">Prevýšenie (m):</label>
+                    <input type="number" id="elevation" v-model="formData.elevation" required min="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="distance">Vzdialenosť (km):</label>
+                    <input type="number" id="distance" v-model="formData.distance" required min="0" step="0.1">
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Lokalita:</label>
+                    <input type="text" id="location" v-model="formData.location" required placeholder="napr. Vršatec, Slovakia">
+                </div>
+
+                <div class="form-group">
+                    <label for="duration">Trvanie:</label>
+                    <input type="text" id="duration" v-model="formData.duration" required placeholder="napr. 1h 30m">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Popis:</label>
+                    <textarea id="description" v-model="formData.description" required rows="3" placeholder="Krátky popis trasy..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="gpx">GPX súbor:</label>
+                    <input type="file" id="gpx" @change="handleFileUpload($event, 'gpx')" accept=".gpx" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="images">Obrázky z trasy:</label>
+                    <input type="file" id="images" @change="handleMultipleFileUpload($event, 'images')" accept="image/*" multiple>
+                    <small>Môžete vybrať viacero obrázkov</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="tags">Tagy (oddelené čiarkami):</label>
+                    <input type="text" id="tags" v-model="formData.tags" placeholder="napr. hory, malebné, jeseň">
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="download-btn" :disabled="isGenerating">
+                        {{ isGenerating ? 'Generujem...' : 'Stiahnuť ZIP súbor' }}
+                    </button>
+                </div>
+
+                <div v-if="errorMessage" class="error-message">
+                    {{ errorMessage }}
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
