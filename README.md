@@ -70,7 +70,6 @@ The generated ZIP file contains all necessary files for the aktivity-dw-mapy pro
 | **Popis** | Textarea | ✅ | Track description |
 | **GPX súbor** | File | ✅ | GPS track file |
 | **Obrázky z trasy** | Files | ❌ | Multiple track images |
-| **Tagy** | Text | ❌ | Comma-separated tags |
 
 ## 🔧 Technical Details
 

@@ -11,8 +11,7 @@ createApp({
                 distance: '',
                 location: '',
                 duration: '',
-                description: '',
-                tags: ''
+                description: ''
             },
             files: {
                 mapa: null,
@@ -80,7 +79,6 @@ createApp({
         
         generateTrackInfo() {
             const id = this.generateId(this.formData.name);
-            const tags = this.formData.tags.split(',').map(tag => tag.trim()).filter(tag => tag);
             const currentDate = new Date().toISOString().split('T')[0];
             
             const difficultyMap = {
@@ -112,7 +110,7 @@ createApp({
                 previewImage: "./preview.png",
                 gpxFile: "./track.gpx",
                 mapUrl: "",
-                tags: tags,
+                tags: [],
                 createdAt: currentDate,
                 about: {
                     title: "O tejto trase",
