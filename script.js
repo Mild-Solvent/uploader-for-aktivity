@@ -1,3 +1,6 @@
+// AKTIVITY DW Uploader - Vue.js Application
+// Generates ZIP files compatible with aktivity-dw-mapy project structure
+
 const { createApp } = Vue;
 
 createApp({
@@ -37,6 +40,7 @@ createApp({
             this.files[fileType] = files;
         },
         
+        // Generate URL-safe ID from Slovak text
         generateId(name) {
             return name.toLowerCase()
                 .replace(/[áäâà]/g, 'a')

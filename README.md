@@ -121,3 +121,5 @@ This project is open source and available under the MIT License.
 ---
 
 **Ready to deploy!** Just push to GitHub and enable Pages. No build process required! 🚀
+
+*Last updated: September 9, 2025*

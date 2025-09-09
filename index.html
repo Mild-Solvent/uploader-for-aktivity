@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AKTIVITY DW Uploader</title>
+    <meta name="description" content="Nástroj na vytváranie ZIP súborov pre AKTIVITY DW mapy project">
     <link rel="stylesheet" href="styles.css">
+    <!-- Vue.js 3 for reactive form handling -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- JSZip for client-side ZIP file generation -->
     <script src="https://unpkg.com/jszip@3.10.1/dist/jszip.min.js"></script>
 </head>
 <body>
@@ -15,6 +18,7 @@
         </header>
 
         <main class="container">
+            <!-- Main upload form for AKTIVITY DW tracks -->
             <form @submit.prevent="generateZip" class="upload-form">
                 <div class="form-group">
                     <label for="name">Názov:</label>
